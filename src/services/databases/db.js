@@ -1,5 +1,5 @@
-import { SQLite } from 'expo-sqlite';
+import * as SQLite from "expo-sqlite/legacy";
 
-const db = await SQLite.openDatabaseAsync('Compras.db');
+export const db = SQLite.openDatabase("database.sqlite", "1.0");
 
 export default db;
