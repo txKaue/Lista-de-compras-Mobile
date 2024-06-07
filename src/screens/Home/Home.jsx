@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 import { addDefaults, initDatabase } from "../../services/databases/initDb";
 import { getItems } from "../../services/databases/queries";
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
+import { CardItem } from "../../components";
 
 const Home = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        
+
         initDatabase();
         addDefaults();
 
@@ -24,10 +26,12 @@ const Home = () => {
         <View>
             {items.length > 0 ? (
                 items.map(item => (
-                    <Text key={item.id}>{item.name} - {item.quantity}</Text>
+                    <CardItem titulo={item.name} quantidade={item.quantity}>
+
+                    </CardItem>
                 ))
             ) : (
-                <Text>Carregando...</Text>
+                <ActivityIndicator animating={true} color={MD2Colors.red800} />
             )}
         </View>
     );
