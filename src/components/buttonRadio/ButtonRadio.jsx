@@ -10,8 +10,8 @@ const ButtonRadio = () => {
         <View style={styles.containerDeDentro}>
             <Text>Urgente</Text>
             <RadioButton
-                value="Urgente"
-                status={ checked === 'Urgente' ? 'checked' : 'unchecked' }
+                value="0"
+                status={ checked === '0' ? 'checked' : 'unchecked' }
                 onPress={() => setChecked('0')}
             />
         </View>
@@ -19,8 +19,8 @@ const ButtonRadio = () => {
         <View style={styles.containerDeDentro}>
             <Text>Normal</Text>
             <RadioButton
-                value="Normal"
-                status={ checked === 'Normal' ? 'checked' : 'unchecked' }
+                value="1"
+                status={ checked === '1' ? 'checked' : 'unchecked' }
                 onPress={() => setChecked('1')}
             />
         </View>
@@ -28,8 +28,8 @@ const ButtonRadio = () => {
         <View style={styles.containerDeDentro}>
             <Text>Opcional</Text>
             <RadioButton
-                value="Opcional"
-                status={ checked === 'Opcional' ? 'checked' : 'unchecked' }
+                value="2"
+                status={ checked === '2' ? 'checked' : 'unchecked' }
                 onPress={() => setChecked('2')}
             />
         </View>

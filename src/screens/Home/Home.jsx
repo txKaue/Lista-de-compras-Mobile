@@ -3,25 +3,28 @@ import { View, Text } from "react-native";
 import { addDefaults, initDatabase } from "../../services/databases/initDb";
 import { getItems } from "../../services/databases/queries";
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
-import { ButtonAdd, CardItem } from "../../components";
+import { ButtonCreate, CardItem } from "../../components";
 import { StyleSheet } from "react-native";
 
 const Home = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-
+        console.log("Iniciando inicialização do banco de dados...");
         initDatabase();
-        addDefaults();
-
+        console.log("Banco de dados inicializado com sucesso.");
+    
+        console.log("Obtendo itens do banco de dados...");
         getItems()
         .then(items => {
+            console.log("Itens obtidos com sucesso:", items);
             // Atualizar o estado 'items' com os itens recebidos
             setItems(items);
         })
-
+        .catch(error => {
+            console.error("Erro ao obter itens:", error);
+        });
     }, []);
-
 
     return (
         <View style={styles.container}>
@@ -35,7 +38,7 @@ const Home = () => {
                 )}
             </View>
             <View style={styles.addButton}>
-                <ButtonAdd/>
+                <ButtonCreate/>
             </View>
         </View>
     );

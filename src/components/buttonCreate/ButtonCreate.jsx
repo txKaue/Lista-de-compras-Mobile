@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IconButton } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
-const ButtonAdd = () => {
+const ButtonCreate = () => {
   const navigation = useNavigation();
 
   return (
@@ -17,4 +17,4 @@ const ButtonAdd = () => {
 
 
 
-export default ButtonAdd;
+export default ButtonCreate;

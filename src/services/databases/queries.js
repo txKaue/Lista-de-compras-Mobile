@@ -11,13 +11,14 @@ export const addItem = (name , quantity, description, category) => {
 
 export const getItems = () => {
   return new Promise((resolve, reject) => {
-    db.transaction(tx => {
-      tx.executeSql(
-        'SELECT * FROM itens',
-        [],
-        (_, { rows: { _array } }) => { resolve(_array); }, // Resolvendo a Promise com os resultados
-        (_, error) => { reject(error); } // Rejeitando a Promise em caso de erro
-      );
-    });
+      db.transaction(tx => {
+          tx.executeSql(
+              'SELECT * FROM itens',
+              [],
+              (_, { rows }) => resolve(rows._array), // Resolvendo a Promise com os resultados
+              (_, error) => reject(error) // Rejeitando a Promise em caso de erro
+          );
+      });
   });
 };
+
