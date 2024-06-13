@@ -1,4 +1,4 @@
-#Lista de comprar
+Lista de compras
 
 Aplicação simples feita com react native e sqlite para armazenar uma lista de compras de forma local.
 
