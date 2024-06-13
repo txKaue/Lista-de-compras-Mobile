@@ -2,25 +2,30 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { TextInputKaue, ButtonRadio, QuantityInput } from "../../components";
 import { addItem } from "../../services/databases/queries";
+import { useNavigation } from "@react-navigation/native";
 
 const Create = () => {
+    const navigation = useNavigation();
+
     const [name, setName] = React.useState("");
     const [description, setDescription] = React.useState("");
-    const [quantity, setQuantity] = React.useState("0");
-    const [category, setCategory] = React.useState("0")
+    const [quantity, setQuantity] = React.useState("");
+    const [category, setCategory] = React.useState("");
 
     const handleCreateItem = () => {
         // Chame a função addItem passando os valores dos estados
-        addItem(name, description, quantity, category);
+        addItem(name, quantity, description, category);
+        navigation.navigate('Home', { refresh: true });
+
     };
 
     return (
         <View style={styles.container}>
             <TextInputKaue label="Nome do item" value={name} onChangeText={setName} />
-            <QuantityInput label="Quantidade" value={quantity} onChangeText={setQuantity} />
+            <TextInputKaue label="Quantidade" value={quantity} keyboardType="numeric" onChangeText={setQuantity} />
             <TextInputKaue label="Descrição" value={description} onChangeText={setDescription} />
             <View style={styles.containerDeDentro}>
-                <ButtonRadio />
+                <ButtonRadio value={category} onChangeText={setCategory} />
             </View>
             <TouchableOpacity onPress={handleCreateItem} style={styles.botao}>
                 <Text style={styles.texto}>Criar</Text>
